@@ -1,0 +1,94 @@
+<div id="leftmenu">
+	<style type="text/css">
+		#leftmenu {
+			position: fixed;
+			left: 0;
+			border-style: solid;
+			border-color: #666;
+			border-width: 0 1px 1px 0;
+			overflow: hidden;
+			padding: 0;
+			visibility: hidden;
+		}
+
+		#leftmenuBack {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 200px;
+			opacity: 0.8;
+			background-color: #fff;
+		}
+
+		#leftmenucontent {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 180px;
+			margin: 10px;
+		}
+
+		#inputBackColor {
+			width: 80px;
+		}
+
+		#buttonBackColor {
+			margin-bottom: 8px;
+		}
+
+		#leftmenucontent select {
+			width: 60px;
+		}
+
+		#buttonAddColumns {
+			margin-bottom: 8px;
+		}
+
+		#globalOptions {
+			margin: 0px 0px 10px 0px;
+			font-size: 16px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	</style>
+	<div id="leftmenuBack"></div>
+	<div id="leftmenucontent">
+		<div>
+			<div id="globalOptions"><span>Options</span></div>
+			<div>Add a line</div>
+			<div>
+				<input id="columnsSelector1" type="checkbox" name="columnsSelector" value="1" checked="checked"/>1
+				<select id="column1type">
+					<option value="text">text</option>
+					<option value="image">image</option>
+					<option value="form">form</option>
+				</select>
+			</div>
+			<div>
+				<input id="columnsSelector2" type="checkbox" name="columnsSelector" value="2"/>2
+				<select id="column2type" disabled="disabled">
+					<option value="text">text</option>
+					<option value="image">image</option>
+					<option value="form">form</option>
+				</select>
+			</div>
+			<div>
+				<input id="columnsSelector3" type="checkbox" name="columnsSelector" value="3"/>3
+				<select id="column3type" disabled="disabled">
+					<option value="text">text</option>
+					<option value="image">image</option>
+					<option value="form">form</option>
+				</select>
+				<button id="buttonAddColumns">Add</button>
+			</div>
+		</div>
+		<div style="display: none;">
+			<div style="margin-top: 16px;">Background color</div>
+			<div>
+				<input id="inputBackColor" type="text" value="red"/>
+				<button id="buttonBackColor">Apply</button>
+			</div>
+		</div>
+	</div>
+</div>

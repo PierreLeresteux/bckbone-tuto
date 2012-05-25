@@ -1,0 +1,131 @@
+<div>
+	<script type="text/x-handlebars-template" id="form-dropdown">
+		<div class="formbuilder">
+			<div class="btn-group dropup">
+			  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			    <i class="icon-plus"></i> {{ i18n "landingpage.addform" }}
+			    <span class="caret"></span>
+			  </a>
+			  <ul class="dropdown-menu">
+			    <li><a href="#" class="addfield" data-field="text">{{ i18n "landingpage.field.text"}}</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#" class="addfield" data-field="select">{{ i18n "landingpage.field.select"}}</a></li>
+			    <li><a href="#" class="addfield" data-field="choice">{{ i18n "landingpage.field.choice"}}</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#" class="addfield" data-field="submit">{{ i18n "landingpage.field.submit"}}</a></li>
+			  </ul>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-text">
+		<div class="fieldContent">
+			<div class="lineEditor"></div>
+	    	<label style="font-weight: bold;">{{ label }} {{#if required}}<span class="req">*</span>{{/if}}</label>
+	    	{{#ifeq validation "text"}}
+	    		<input type="text" class="span3 field {{#if ../required}}required{{/if}}" name="{{ ../label }}" />
+	    	{{/ifeq}}
+	    	{{#ifeq validation "number"}}
+	    		<div class="input-prepend">
+					<span class="add-on">123</span><input type="text" class="span3 field {{#if ../required}}required{{/if}}" name="{{ ../label }}" />
+				</div>
+	    	{{/ifeq}}
+	    	{{#ifeq validation "email"}}
+	    		<div class="input-prepend">
+					<span class="add-on">@</span><input type="text" class="span3 field {{#if ../required}}required{{/if}}" name="{{ ../label }}" />
+				</div>
+	    	{{/ifeq}}
+	    	{{#ifeq validation "date-us"}}
+				<div class="input-prepend date" data-date="{{ ../datestart }}" data-date-format="mm/dd/yyyy">
+					<span class="add-on"><i class="icon-th"></i></span><input type="text" class="span2 field {{#if ../required}}required{{/if}}" name="{{ ../label }}" readonly />
+			  	</div>
+	    	{{/ifeq}}
+	    	{{#ifeq validation "date-fr"}}
+	    		<div class="input-prepend date" data-date="{{ ../datestart }}" data-date-format="dd/mm/yyyy" data-date-weekstart="1">
+					<span class="add-on"><i class="icon-th"></i></span><input type="text" class="span2 field {{#if ../required}}required{{/if}}" name="{{ ../label }}" readonly />
+			  	</div>
+	    	{{/ifeq}}
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-ed-text">
+		<div class="fieldEditor form-inline" style="padding: 5px;margin: 0px">
+			<label class="checkbox">
+		  		<input type="checkbox" class="requiredCheck" {{#if required}}checked{{/if}}>
+		  		<i class="icon-flag"></i>
+		  	</label>
+	    	<input type="text" class="span1 labelEd" value="{{ label }}" />
+		  	<select name="validation" class="span1 subtype">
+		  		<option class="fieldType" value="text" {{#ifeq validation "text"}}selected{{/ifeq}}>Text</option>
+		  		<option class="fieldType" value="number" {{#ifeq validation "number"}}selected{{/ifeq}}>Number</option>
+		  		<option class="fieldType" value="email" {{#ifeq validation "email"}}selected{{/ifeq}}>Email</option>
+		  		<option class="fieldType" value="date-us" {{#ifeq validation "date-us"}}selected{{/ifeq}}>Date mm/dd/yyyy</option>
+		  		<option class="fieldType" value="date-fr" {{#ifeq validation "date-fr"}}selected{{/ifeq}}>Date dd/mm/yyyy</option>
+		  	</select>
+		  	<button class="btn btn-small trash"><i class="icon-trash"></i></button>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-select">
+		<div class="fieldContent">
+			<div class="lineEditor"></div>
+	    	<label style="font-weight: bold;">{{ label }} {{#if required}}<span class="req">*</span>{{/if}}</label>
+	    	<select name="{{ label }}" class="span3 field">
+	    	</select>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-ed-select">
+		<div class="fieldEditor form-inline" style="padding: 5px;margin: 0px">
+			<label class="checkbox">
+		  		<input type="checkbox" class="requiredCheck" {{#if required}}checked{{/if}}>
+		  		<i class="icon-flag"></i>
+		  	</label>
+		  	<input type="text" class="span1 labelEd" value="{{ label }}" />
+		  	<input type="text" class="span2 choiceEd" value="{{ choices }}" />
+		  	<button class="btn btn-small trash"><i class="icon-trash"></i></button>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-choice">
+		<div class="fieldContent">
+			<div class="lineEditor"></div>
+	    	<label style="font-weight: bold;">{{ label }} {{#if required}}<span class="req">*</span>{{/if}}</label>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-ed-choice">
+		<div class="fieldEditor form-inline" style="padding: 5px;margin: 0px">
+			<label class="checkbox">
+		  		<input type="checkbox" class="requiredCheck" {{#if required}}checked{{/if}}>
+		  		<i class="icon-flag"></i>
+		  	</label>
+			<label class="checkbox">
+				<input name="multiple" type="checkbox" {{#if multiple}}checked{{/if}}>
+				<i class="icon-check"></i>
+			</label>
+		  	<input type="text" class="span1 labelEd" value="{{ label }}" />
+			<input type="text" class="span2 choiceEd" value="{{ choices }}" />
+			<button class="btn btn-small trash"><i class="icon-trash"></i></button>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-submit">
+		<div class="fieldContent">
+			<div class="lineEditor"></div>
+	    	<button class="btn btn-small btn-success submit-btn" type="submit"><i class="icon-ok icon-white"></i> <span class="title">{{ label }}</span></button>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="form-tmpl-ed-submit">
+		<div class="fieldEditor form-inline" style="padding: 5px;margin: 0px">
+	    	<input type="text" class="span1 labelEd" value="{{ label }}" />
+	    	<button class="btn btn-small trash"><i class="icon-trash"></i></button>
+	    </div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="line-ed">
+		<i class="icon-pencil"></i>
+		<i class="icon-resize-vertical"></i>
+	</script>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Tuto Backbone</title>
+		<script data-main="js/main" src="js/lib/require.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<style>
+	      body {
+	        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	      }
+    	</style>
+	</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Tutoriel Backbone</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#articles">Articles list</a></li>
+              <li><a href="#newarticle">Create an article</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	<div class="container">
+
+		<section id="articles">
+			<div class="page-header">
+				<h1>My Blog <small>Articles</small></h1>
+			</div>
+			<div id="blogarticles" class="row">
+			</div>
+		</section>
+
+		<section id="newarticle">
+			<div class="page-header">
+				<h1>Create <small>a new article</small></h1>
+			</div>
+			<div class="row">
+				<div class="span12 columns">
+
+					<form class="form-horizontal">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label">Title</label>
+								<div class="controls">
+									<input type="text" name="title" class="input-xlarge" placeholder="The title">	
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Content</label>
+								<div class="controls">
+									<textarea class="input-xlarge" name="body" rows="3">Veuillez entrer ici le texte de votre article</textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Category</label>
+								<div class="controls">
+									<select name="category">
+						             	<option>Sport</option>
+						                <option>News</option>
+						                <option>Technology</option>
+						            </select>
+								</div>
+							</div>
+							<div class="form-actions">
+					            <button type="submit" class="btn btn-primary">Publish the article</button>
+					        </div>
+						</fieldset>
+					</form>
+				</div>
+		    </div>
+	    </section>
+    </div> <!-- /container -->
+</body>
+</html>
