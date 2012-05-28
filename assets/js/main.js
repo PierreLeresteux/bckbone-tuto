@@ -6,8 +6,9 @@ require([ "order!js/lib/jquery-1.7.1.min.js",
 		  "order!js/lib/bootstrap-dropdown.js",
 		  "order!js/lib/bootstrap-button.js"],
 			function() {
-				require([ "build"], 
-						  function(build) {
+				require([ "build",
+						"text!templates/articleTemplate.html"], 
+						  function(build, t) {
 							build.initialize();
 				});
 			});

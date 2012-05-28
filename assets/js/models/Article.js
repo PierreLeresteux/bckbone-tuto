@@ -1,6 +1,7 @@
 define(function() {
 	return Backbone.Model.extend({
-		initialize: function(){
+		initialize: function(title, body, category){
+			
 			console.log("Article - initialize");
 		}
     });
