@@ -27,8 +27,6 @@ define(['views/ArticleView'],function(ArticleView) {
 			console.log("Title : "+title);
 			console.log("Body : "+body);
 			console.log("Category : "+category);
-			new ArticleView({"title":title,"body":body,"category":category}).render();
-			
 		}
 	});
 });

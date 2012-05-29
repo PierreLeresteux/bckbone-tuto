@@ -1,0 +1,74 @@
+<div>
+    <script type="text/x-handlebars-template" id="navbar">
+    	<div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">Tutoriel Backbone</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li class="active"><a href="#articles">Articles list</a></li>
+                  <li><a href="#newarticle">Create an article</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars-template" id="section-article">
+    	<section id="articles">
+            <div class="page-header">
+                <h1>My Blog <small>Articles</small></h1>
+            </div>
+            <div id="blogarticles" class="row">
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-handlebars-template" id="session-new">
+    	<section id="newarticle">
+            <div class="page-header">
+                <h1>Create <small>a new article</small></h1>
+            </div>
+            <div class="row">
+                <div class="span12 columns">
+
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label">Title</label>
+                                <div class="controls">
+                                    <input type="text" name="title" class="input-xlarge" placeholder="The title">   
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Content</label>
+                                <div class="controls">
+                                    <textarea class="input-xlarge" name="body" rows="3">Veuillez entrer ici le texte de votre article</textarea>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Category</label>
+                                <div class="controls">
+                                    <select name="category">
+                                        <option>Sport</option>
+                                        <option>News</option>
+                                        <option>Technology</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Publish the article</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </script>
+</div>

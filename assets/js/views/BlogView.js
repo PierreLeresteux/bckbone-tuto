@@ -7,9 +7,11 @@ define(['views/NewArticleView'],function(NewArticleView) {
 				view.template = t;
 			});
 		},
+		events: {
+			'newArticleEvent':'addArticle'
+		},
 		render: function() {
 			var line = $(this.template).find('#blog').html();
-				
 			var template = Handlebars.compile(line);
 			$(this.el).html(template());
 			this.addNewArticle();
@@ -19,6 +21,11 @@ define(['views/NewArticleView'],function(NewArticleView) {
 			var newArticle = new NewArticleView;
         	var renderNewArticle = newArticle.render();
         	$(this.el).find('#newarticle').html(renderNewArticle.el);
+		},
+		addArticle: function(event) {
+			console.log("addArticle Event");
+			$(this.el).find('#blogarticles').append(new ArticleView({"title":event.title,"body":event.body,"category":event.category}).render().el);
 		}
+
 	});
 });
