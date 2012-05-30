@@ -22,7 +22,6 @@ define(['collections/Articles','views/NewArticleView','views/ArticleView'],funct
         	$(this.el).find('#newarticle').html(renderNewArticle.el);
 		},
 		addArticle: function(event) {
-			console.log("addArticle Event" + JSON.stringify(event));
 			$(this.el).find('#blogarticles').append(new ArticleView(event).render().el);
 		}
 

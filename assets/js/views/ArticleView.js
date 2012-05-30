@@ -1,7 +1,6 @@
 define(function() {
 	return Backbone.View.extend({
 		initialize: function(model) {
-			console.log("init articleView "+JSON.stringify(model));
 			this.model = model;
 			var view = this;
 			require(["text!templates/articleTemplate.html" ], function(t) {
@@ -11,7 +10,6 @@ define(function() {
 		render: function() {
 			var line = $(this.template).find('#article').html();
 			var template = Handlebars.compile(line);
-			console.log(">>"+JSON.stringify(this.model));
 			$(this.el).html(template(this.model.toJSON()));
 			return this;
 		},
@@ -20,9 +18,6 @@ define(function() {
 			var title = $(this.el).find('input[name=title]').val();
 			var body = $(this.el).find('textarea[name=body]').val();
 			var category = $(this.el).find('select[name=category]').val();
-			console.log("Title : "+title);
-			console.log("Body : "+body);
-			console.log("Category : "+category);
 			new ArticleView(title,body,category);
 			event.preventDefault();
 		}
