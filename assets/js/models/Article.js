@@ -9,6 +9,10 @@ define(function() {
 				body: '',
 				category: ''
 			};
-		}
+		},
+		clear: function() {
+			console.log("Article - clear");
+	      	this.destroy();
+	    }
     });
 });

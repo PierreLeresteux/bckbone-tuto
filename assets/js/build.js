@@ -5,6 +5,7 @@ define(['views/BlogView'],
         	var view = this;
         	var blog = new BlogView;
         	$('#container').html(blog.render().el);
+        	blog.load();
         }
     };
 });

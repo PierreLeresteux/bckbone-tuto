@@ -1,5 +1,6 @@
 define(['models/Article'], function(Article) {
 	return Backbone.Collection.extend({
-		model: Article
+		model: Article,
+		localStorage: new Store("blogbackbone")
 	});
 });
