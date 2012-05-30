@@ -1,11 +1,11 @@
-define(['views/BlogView'], 
-    function(BlogView) {
+define(['js/router/Routes.js'], 
+    function(Routes) {
     return {
         initialize: function() {
-        	var view = this;
-        	var blog = new BlogView;
-        	$('#container').html(blog.render().el);
-        	blog.load();
+        	
+        	var route = new Routes;
+			Backbone.history.start();
+        	
         }
     };
 });

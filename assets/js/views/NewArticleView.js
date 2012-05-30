@@ -26,8 +26,7 @@ define(['views/ArticleView','models/Article'],function(ArticleView,Article) {
 			var title = $(this.el).find('input[name=title]').val();
 			var body = $(this.el).find('textarea[name=body]').val();
 			var category = $(this.el).find('select[name=category]').val();	
-			//var article = new Article();
-			
+			//
 			this.articles.create({"title":title,"body":body,"category":category});
 			console.log("article created :"+JSON.stringify(this.articles));
 		}

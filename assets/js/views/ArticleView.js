@@ -28,7 +28,8 @@ define(function() {
 			event.preventDefault();
 		},
 		clear: function() {
-	      this.model.clear();
+			console.log("ArticleView-clear");
+	      	this.model.clear();
 	    }
 	});
 });

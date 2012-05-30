@@ -1,4 +1,4 @@
-define(['collections/Articles','views/NewArticleView','views/ArticleView','js/router/Routes.js'],function(Articles,NewArticleView,ArticleView,Routes) {
+define(['collections/Articles','views/ArticleView'],function(Articles,ArticleView) {
 	return Backbone.View.extend({
 		initialize: function() {
 			console.log("BlogView-init");
@@ -7,18 +7,14 @@ define(['collections/Articles','views/NewArticleView','views/ArticleView','js/ro
 				view.template = t;
 			});
 			this.articles = new Articles;
-			this.articles.on("add", this.addArticle, this);
+			//this.articles.on("add", this.addArticle, this);
 			this.articles.bind('reset', this.addAllArticles, this);
-
-			var route = new Routes;
-			Backbone.history.start();
 		},
 		render: function() {
 			console.log("BlogView-render");
 			var line = $(this.template).find('#blog').html();
 			var template = Handlebars.compile(line);
 			$(this.el).html(template());
-			this.addNewArticle();
 			return this;
 		},
 		load: function() {
@@ -35,12 +31,6 @@ define(['collections/Articles','views/NewArticleView','views/ArticleView','js/ro
 			console.log(JSON.stringify(this.articles));
 			this.articles.remove(article);
 			console.log(JSON.stringify(this.articles));
-		},
-		addNewArticle: function() {
-			console.log("BlogView-addNewArticle");
-			var newArticle = new NewArticleView({"collection":this.articles});
-        	var renderNewArticle = newArticle.render();
-        	$(this.el).find('#newarticle').html(renderNewArticle.el);
 		},
 		addArticle: function(event) {
 			console.log("BlogView-addArticle");
