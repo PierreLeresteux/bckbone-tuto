@@ -1,4 +1,4 @@
-define(['views/NewArticleView'],function(NewArticleView) {
+define(['collections/Articles','views/NewArticleView','views/ArticleView'],function(Articles,NewArticleView,ArticleView) {
 	return Backbone.View.extend({
 		initialize: function() {
 			console.log("init blog");
@@ -6,9 +6,8 @@ define(['views/NewArticleView'],function(NewArticleView) {
 			require(["text!templates/articleTemplate.html" ], function(t) {
 				view.template = t;
 			});
-		},
-		events: {
-			'newArticleEvent':'addArticle'
+			this.articles = new Articles;
+			this.articles.on("add", this.addArticle, this);
 		},
 		render: function() {
 			var line = $(this.template).find('#blog').html();
@@ -18,13 +17,13 @@ define(['views/NewArticleView'],function(NewArticleView) {
 			return this;
 		},
 		addNewArticle: function() {
-			var newArticle = new NewArticleView;
+			var newArticle = new NewArticleView({"collection":this.articles});
         	var renderNewArticle = newArticle.render();
         	$(this.el).find('#newarticle').html(renderNewArticle.el);
 		},
 		addArticle: function(event) {
-			console.log("addArticle Event");
-			$(this.el).find('#blogarticles').append(new ArticleView({"title":event.title,"body":event.body,"category":event.category}).render().el);
+			console.log("addArticle Event" + JSON.stringify(event));
+			$(this.el).find('#blogarticles').append(new ArticleView(event).render().el);
 		}
 
 	});
