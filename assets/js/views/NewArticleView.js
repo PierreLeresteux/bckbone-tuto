@@ -17,18 +17,22 @@ define(['views/ArticleView','models/Article'],function(ArticleView,Article) {
 				
 			var template = Handlebars.compile(line);
 			$(this.el).html(template());
+			this.$('.alert').hide();
 			return this;
 		},
 		publish: function(event) {
 			console.log("NewArticleView-publish");
 			event.preventDefault();
-			console.log("Publish");
-			var title = $(this.el).find('input[name=title]').val();
-			var body = $(this.el).find('textarea[name=body]').val();
-			var category = $(this.el).find('select[name=category]').val();	
-			//
+			
+			var view = this;
+			$(view.el).find('.form-actions').hide();
+			
+			var title = $(view.el).find('input[name=title]').val();
+			var body = $(view.el).find('textarea[name=body]').val();
+			var category = $(view.el).find('select[name=category]').val();	
 			this.articles.create({"title":title,"body":body,"category":category});
-			console.log("article created :"+JSON.stringify(this.articles));
+			this.$('.alert').show("slow");
+			var t = setTimeout(function(){view.render();},4000);
 		}
 	});
 });
