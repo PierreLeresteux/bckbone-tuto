@@ -1,4 +1,4 @@
-define(['collections/Articles','views/NewArticleView','views/ArticleView'],function(Articles,NewArticleView,ArticleView) {
+define(['collections/Articles','views/NewArticleView','views/ArticleView','js/router/Routes.js'],function(Articles,NewArticleView,ArticleView,Routes) {
 	return Backbone.View.extend({
 		initialize: function() {
 			console.log("BlogView-init");
@@ -9,6 +9,9 @@ define(['collections/Articles','views/NewArticleView','views/ArticleView'],funct
 			this.articles = new Articles;
 			this.articles.on("add", this.addArticle, this);
 			this.articles.bind('reset', this.addAllArticles, this);
+
+			var route = new Routes;
+			Backbone.history.start();
 		},
 		render: function() {
 			console.log("BlogView-render");
