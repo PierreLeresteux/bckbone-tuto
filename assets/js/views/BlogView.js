@@ -18,7 +18,7 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 		},
 		load: function() {
 			console.log("BlogView-load");
-			this.articles.fetch(); // reset
+			this.articles.fetch(); // ->reset
 		},
 		deletArticle: function(event) {
 			console.log("BlogView-deleteArticle");
@@ -40,6 +40,5 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 			console.log("BlogView-addAllArticles");
 			this.articles.each(this.addArticle);
 		}
-
 	});
 });
