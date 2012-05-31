@@ -1,8 +1,9 @@
-define(['views/ArticleView','models/Article'],function(ArticleView,Article) {
+define(['views/ArticleView','models/Article','router/Routes'],function(ArticleView,Article,Routes) {
 	return Backbone.View.extend({
 		initialize: function(param) {
 			console.log("NewArticleView-init");
 			this.articles = param.collection;
+			this.router = param.router;
 			var view = this;
 			require(["text!templates/articleTemplate.html" ], function(t) {
 				view.template = t;
@@ -32,7 +33,9 @@ define(['views/ArticleView','models/Article'],function(ArticleView,Article) {
 			var category = $(view.el).find('select[name=category]').val();	
 			this.articles.create({"title":title,"body":body,"category":category});
 			this.$('.alert').show("slow");
-			var t = setTimeout(function(){view.render();},4000);
+			var t = setTimeout(function(){
+				view.render();
+			},4000);
 		}
 	});
 });

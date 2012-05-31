@@ -7,7 +7,6 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 				view.template = t;
 			});
 			this.articles = new Articles;
-			//this.articles.on("add", this.addArticle, this);
 			this.articles.bind('reset', this.addAllArticles, this);
 		},
 		render: function() {

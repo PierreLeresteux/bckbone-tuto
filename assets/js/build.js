@@ -1,4 +1,4 @@
-define(['js/router/Routes.js'], 
+define(['router/Routes'], 
     function(Routes) {
     return {
         initialize: function() {

@@ -7,6 +7,7 @@ define(['views/BlogView','views/NewArticleView'],function(BlogView, NewArticleVi
     initialize: function(param) {
       console.log("Route-init");
       this.blog = new BlogView;
+      this.articles();
     },
     articles: function() {
       console.log("Route - articles");  
@@ -16,7 +17,7 @@ define(['views/BlogView','views/NewArticleView'],function(BlogView, NewArticleVi
 
     newarticle: function() {
       console.log("Route - newarticle");
-      var newArticle = new NewArticleView({"collection":this.blog.articles});
+      var newArticle = new NewArticleView({"collection":this.blog.articles,"router":this});
       var renderNewArticle = newArticle.render();
       $('#container').html(renderNewArticle.el);
     }

@@ -29,7 +29,11 @@ define(function() {
 		},
 		clear: function() {
 			console.log("ArticleView-clear");
-	      	this.model.clear();
+			var view = this;
+			$(this.el).hide("slow");
+			var t = setTimeout(function(){
+				view.model.clear();
+			},1000);
 	    }
 	});
 });
