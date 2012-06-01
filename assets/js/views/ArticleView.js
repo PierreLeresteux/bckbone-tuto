@@ -16,7 +16,7 @@ define(function() {
 			console.log("ArticleView-render");
 			var line = $(this.template).find('#article').html();
 			var template = Handlebars.compile(line);
-			$(this.el).html(template(this.model.toJSON()));
+			$(this.el).empty().append(template(this.model.toJSON()));
 			return this;
 		},
 		publish: function(event) {
