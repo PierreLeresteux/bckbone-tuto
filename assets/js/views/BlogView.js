@@ -1,4 +1,4 @@
-define(['collections/Articles','views/ArticleView'],function(Articles,ArticleView) {
+define(['collections/Articles','views/ArticleView','views/FilterView','models/Article'],function(Articles,ArticleView,FilterView,Article) {
 	return Backbone.View.extend({
 		initialize: function() {
 			console.log("BlogView-init");
@@ -8,9 +8,6 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 			});
 			this.articles = new Articles;
 			this.articles.bind('reset', this.addAllArticles, this);
-		},
-		events: {
-			'click .btn' : 'filter'
 		},
 		render: function() {
 			console.log("BlogView-render");
@@ -26,9 +23,8 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 		},
 		addFilter: function(event) {
 			console.log("BlogView-addFilter");
-			var line = $(this.template).find('#filter').html();
-			var template = Handlebars.compile(line);
-			this.$('#filter').empty().append(template());
+			var filterView = new FilterView({"blogView":this});
+			this.$('#filter').empty().append(filterView.render().el);
 		},
 		deletArticle: function(event) {
 			console.log("BlogView-deleteArticle");
@@ -37,9 +33,7 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 			var articleId = articleContainer.attr('id');
 			
 			var article = this.articles.get(articleId);
-			console.log(JSON.stringify(this.articles));
 			this.articles.remove(article);
-			console.log(JSON.stringify(this.articles));
 		},
 		addArticle: function(event) {
 			console.log("BlogView-addArticle");
@@ -50,8 +44,15 @@ define(['collections/Articles','views/ArticleView'],function(Articles,ArticleVie
 			console.log("BlogView-addAllArticles");
 			this.articles.each(this.addArticle);
 		},
-		filter: function(event) {
-			console.log("BlogView-filter");
+		changeFilter: function(event) {
+			console.log("BlogView-changeFilter");
+			var view = this;
+			this.$('#blogarticles').empty();
+			var filterArticle = event.collection;
+			_.each(filterArticle,function(article){
+				var articleModel = new Article(article);
+				view.addArticle(articleModel);
+			});
 		}
 	});
 });

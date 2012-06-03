@@ -11,7 +11,7 @@ define(['views/BlogView','views/NewArticleView'],function(BlogView, NewArticleVi
     },
     articles: function() {
       console.log("Route - articles");  
-      $('#container').html(this.blog.render().el);
+      $('#container').empty().append(this.blog.render().el);
       this.blog.load();
     },
 
