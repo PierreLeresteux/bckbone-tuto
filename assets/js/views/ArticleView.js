@@ -1,7 +1,7 @@
 define(function() {
 	return Backbone.View.extend({
 		initialize: function(model) {
-			console.log("ArticleView-init "+JSON.stringify(model));
+			console.log("ArticleView-init");
 			this.model = model;
 			var view = this;
 			require(["text!templates/articleTemplate.html" ], function(t) {

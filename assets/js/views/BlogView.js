@@ -7,6 +7,9 @@ define(['collections/Articles','views/ArticleView','views/FilterView','models/Ar
 				view.template = t;
 			});
 			this.articles = new Articles;
+			this.articles.comparator = function(article) {
+			  return -article.get("creationDate");
+			};
 			this.articles.bind('reset', this.addAllArticles, this);
 		},
 		render: function() {

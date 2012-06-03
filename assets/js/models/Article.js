@@ -7,7 +7,8 @@ define(function() {
 			return {
 				title: '',
 				body: '',
-				category: ''
+				category: '',
+				creationDate: ''
 			};
 		},
 		clear: function() {

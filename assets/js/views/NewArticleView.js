@@ -30,8 +30,9 @@ define(['views/ArticleView','models/Article','router/Routes'],function(ArticleVi
 			
 			var title = $(view.el).find('input[name=title]').val();
 			var body = $(view.el).find('textarea[name=body]').val();
-			var category = $(view.el).find('select[name=category]').val();	
-			this.articles.create({"title":title,"body":body,"category":category});
+			var category = $(view.el).find('select[name=category]').val();
+			var creationDate = new Date;	
+			this.articles.create({"title":title,"body":body,"category":category,"creationDate":creationDate.getTime()});
 			this.$('.alert').show("slow");
 			var t = setTimeout(function(){
 				view.render();
