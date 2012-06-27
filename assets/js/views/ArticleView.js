@@ -7,7 +7,6 @@ define(function() {
 			require(["text!templates/articleTemplate.html" ], function(t) {
 				view.template = t;
 			});
-			this.model.bind('destroy', this.remove, this);
 		},
 		events: {
 			'click .close': 'clear'
@@ -32,8 +31,8 @@ define(function() {
 			var view = this;
 			$(this.el).hide("slow");
 			var t = setTimeout(function(){
-				view.model.clear();
-			},1000);
+				$.publish("deleteEvents",[view.model]);
+			},500);
 	    }
 	});
 });

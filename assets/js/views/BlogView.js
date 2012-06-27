@@ -11,6 +11,9 @@ define(['collections/Articles','views/ArticleView','views/FilterView','models/Ar
 			  return -article.get("creationDate");
 			};
 			this.articles.bind('reset', this.addAllArticles, this);
+			$.subscribe("deleteEvents", function(event){
+				view.deletArticle(event);
+			});
 		},
 		render: function() {
 			console.log("BlogView-render");
@@ -29,14 +32,10 @@ define(['collections/Articles','views/ArticleView','views/FilterView','models/Ar
 			var filterView = new FilterView({"blogView":this});
 			this.$('#filter').empty().append(filterView.render().el);
 		},
-		deletArticle: function(event) {
+		deletArticle: function(model) {
 			console.log("BlogView-deleteArticle");
-			var target = event.target ? event.target : event.srcElement;
-			var articleContainer = $(target).parent().parent();
-			var articleId = articleContainer.attr('id');
-			
-			var article = this.articles.get(articleId);
-			this.articles.remove(article);
+			console.log("Articles-remove article");
+			this.articles.remove(model);
 		},
 		addArticle: function(event) {
 			console.log("BlogView-addArticle");
